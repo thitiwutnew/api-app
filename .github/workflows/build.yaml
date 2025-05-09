@@ -108,7 +108,7 @@ jobs:
           for file in $(find ./values -type f -name '*.yaml'); do
             ENV=$(yq e '.API' $file)
             if [ "$ENV" = "${{ needs.build.outputs.env }}" ]; then
-              yq e -i '.API.IMAGE.tag = strenv(IMAGE)' $file
+              yq e -i '.IMAGE.tag = strenv(IMAGE)' $file
             fi
           done
       
